@@ -44,3 +44,11 @@ class ListaAlunosMatriculadosEmUmCursoSerializer(serializers.ModelSerializer):
         fields = ('aluno_nome',)
 
     aluno_nome = serializers.ReadOnlyField(source='aluno.nome')
+
+
+# API V2
+class AlunoSerializerV2(serializers.ModelSerializer):
+
+    class Meta:
+        model = Aluno
+        fields = ('id', 'nome', 'rg', 'cpf', 'data_nascimento', 'celular')
