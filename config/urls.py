@@ -19,6 +19,9 @@ from django.urls import path, include
 from escola.views import AlunosViewSet, CursosViewSet, MatriculasViewSet, ListaAlunosMatriculados
 from rest_framework import routers
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -44,11 +47,15 @@ router.register('matriculas', MatriculasViewSet, basename='Matriculas')
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('controle_geral/', admin.site.urls),
     path('', include(router.urls)),
     # path('aluno/<int:pk>/matriculas/', ListaMatriculasAluno.as_view()),
     path('cursos/<int:pk>/matriculas/', ListaAlunosMatriculados.as_view()),
     
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-]
+
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+   
+
+]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -7,6 +7,8 @@ class Aluno(models.Model):
     cpf = models.CharField(max_length=11)
     data_nascimento = models.DateField()
     celular = models.CharField(max_length=11, default='')
+    foto = models.ImageField(blank=True)
+    arquivo_pdf = models.FileField(blank=True, default='')
 
     def __str__(self) -> str:
         return self.nome

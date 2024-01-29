@@ -6,7 +6,7 @@ class AlunoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Aluno
-        fields = ('id', 'nome', 'rg', 'cpf', 'data_nascimento')
+        fields = ('id', 'nome', 'rg', 'cpf', 'data_nascimento', 'foto', 'arquivo_pdf')
 
 
 class CursoSerializer(serializers.ModelSerializer):
@@ -51,4 +51,4 @@ class AlunoSerializerV2(serializers.ModelSerializer):
 
     class Meta:
         model = Aluno
-        fields = ('id', 'nome', 'rg', 'cpf', 'data_nascimento', 'celular')
+        fields = ('id', 'nome', 'rg', 'cpf', 'data_nascimento', 'celular', 'foto', 'arquivo_pdf')
